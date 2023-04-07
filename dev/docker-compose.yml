@@ -1,0 +1,15 @@
+version: '3.6'
+services:
+  dev:
+    build:
+      context: ./docker
+      args:
+        HOME: ${HOME}
+    image: dev-tools
+    container_name: devenv
+    user:  ${USER_ID}:${GROUP_ID}
+    volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - ${HOME}/workspace:${HOME}/workspace
+      - ${HOME}/projects:${HOME}/projects
+    command: tail -f /dev/null
