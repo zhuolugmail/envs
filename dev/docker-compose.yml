@@ -5,6 +5,8 @@ services:
       context: ./docker
       args:
         HOME: ${HOME}
+        USER: ${USER}
+        GROUP: ${USER}
     image: dev-tools
     container_name: devenv
     user:  ${USER_ID}:${GROUP_ID}
