@@ -13,7 +13,7 @@ RUN  apt-get -y update && apt-get -y upgrade
 RUN  apt-get install -y \
         build-essential gdb python3 python3-dev python3-pip \
         curl git vim ethtool iproute2 iputils-ping wget make \
-        file tree
+        file tree libnss3-tools
 
 RUN  ln -sf /usr/bin/python3 /usr/bin/python
 
@@ -35,4 +35,12 @@ RUN git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew \
 RUN echo "export PATH=\$HOME/.linuxbrew/bin:\$PATH" >> ~/.bashrc
 
 WORKDIR $HOME
+
+RUN curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
+RUN chmod +x mkcert-v*-linux-amd64
+
+USER root
+RUN cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
+USER $USER
+RUN rm mkcert-v*-linux-amd64
 
