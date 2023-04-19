@@ -18,10 +18,21 @@ RUN  apt-get install -y \
 RUN  ln -sf /usr/bin/python3 /usr/bin/python
 
 RUN addgroup --gid 1000 $GROUP && \
-    useradd --uid 1000 --gid $GROUP --shell /bin/bash $USER
+    useradd -m --uid 1000 --gid $GROUP --shell /bin/bash $USER
 
 RUN echo "$USER:$USER" | chpasswd
-    
+
+USER $USER
+
+RUN mkdir -p ~/.linuxbrew
+
+RUN git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew \
+&& mkdir ~/.linuxbrew/bin \
+&& ln -s ../Homebrew/bin/brew ~/.linuxbrew/bin \
+&& eval $(~/.linuxbrew/bin/brew shellenv) \
+&& brew --version
+
+RUN echo "export PATH=\$HOME/.linuxbrew/bin:\$PATH" >> ~/.bashrc
 
 WORKDIR $HOME
 
