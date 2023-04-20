@@ -11,7 +11,6 @@ services:
     container_name: devenv
     user:  ${USER_ID}:${GROUP_ID}
     volumes:
-      - /etc/passwd:/etc/passwd:ro
       - ${HOME}/workspace:${HOME}/workspace
       - ${HOME}/projects:${HOME}/projects
     command: tail -f /dev/null
