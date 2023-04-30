@@ -46,3 +46,14 @@ RUN cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 USER $USER
 RUN rm mkcert-v*-linux-amd64
 
+ENV NVM_DIR $HOME/.nvm
+ENV NODE_VERSION v18.16.0
+
+RUN curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh
+RUN bash ./install_nvm.sh
+RUN rm ./install_nvm.sh
+RUN . $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
