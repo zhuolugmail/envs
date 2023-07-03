@@ -13,7 +13,9 @@ RUN  apt-get -y update && apt-get -y upgrade
 RUN  apt-get install -y \
         build-essential gdb python3 python3-dev python3-pip \
         curl git vim ethtool iproute2 iputils-ping wget make \
-        file tree libnss3-tools sudo
+        file tree libnss3-tools meson ninja-build
+
+RUN  apt-get install -y sudo
 
 RUN  ln -sf /usr/bin/python3 /usr/bin/python
 
