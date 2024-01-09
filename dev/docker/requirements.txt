@@ -1,0 +1,6 @@
+
+pandas
+numpy==1.21.5
+scipy==1.7.3
+torch==1.7.1+cpu
+urllib3==1.26.8

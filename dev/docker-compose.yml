@@ -8,6 +8,7 @@ services:
         USER: ${USER}
         GROUP: ${USER}
     image: dev-tools
+    hostname: devenv
     container_name: devenv
     user:  ${USER_ID}:${GROUP_ID}
     volumes:

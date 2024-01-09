@@ -28,6 +28,11 @@ RUN echo "$USER:$USER" | chpasswd
 
 RUN echo "$USER	ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
+COPY ./requirements.txt /tmp
+RUN  pip install --no-cache-dir --disable-pip-version-check \
+     -r /tmp/requirements.txt \
+     -f https://download.pytorch.org/whl/torch_stable.html
+
 USER $USER
 
 RUN mkdir -p ~/.linuxbrew
