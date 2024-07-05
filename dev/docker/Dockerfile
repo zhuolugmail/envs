@@ -33,6 +33,8 @@ RUN  pip install --no-cache-dir --disable-pip-version-check \
      -r /tmp/requirements.txt \
      -f https://download.pytorch.org/whl/torch_stable.html
 
+RUN  pip install yt-dlp
+
 USER $USER
 
 RUN mkdir -p ~/.linuxbrew
