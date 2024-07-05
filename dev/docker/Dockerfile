@@ -13,7 +13,7 @@ RUN  apt-get -y update && apt-get -y upgrade
 RUN  apt-get install -y \
         build-essential gdb python3 python3-dev python3-pip \
         curl git vim ethtool iproute2 iputils-ping wget make \
-        file tree libnss3-tools meson ninja-build cmake
+        file tree libnss3-tools meson ninja-build cmake ffmpeg
 
 RUN  apt-get install -y sudo
 
